@@ -1,0 +1,21 @@
+# Віртуальне середовище
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# База даних SQLite (якщо не хочете її тримати в репо)
+*.sqlite3
+
+# Секрети
+.env
+
+# Django build
+/media/
+
+# Системні файли редакторів (опційно)
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

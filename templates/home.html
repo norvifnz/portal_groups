@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Головна</title>
 </head>
 <body>
     <h1>Вітаю у Django!</h1>
-    <p>Це головна сторінка з шаблону <code>жопа</code>.</p>
+    <p>Це головна сторінка з шаблону home.html.</p>
+
+    <hr>
+    <a href="{% url 'login' %}">Увійти</a> |
+    <a href="{% url 'register' %}">Реєстрація</a>
 </body>
 </html>

@@ -1,3 +1,4 @@
+from django.urls import path, include
 """
 URL configuration for myproject project.
 
@@ -25,3 +26,6 @@ urlpatterns = [
     path('diary/', include('diary.urls')),
 ]
 
+urlpatterns = [
+    path('events/', include('events.urls')),
+]

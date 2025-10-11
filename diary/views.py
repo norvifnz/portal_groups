@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def grades_list(request):
+    return render(request, 'diary/grades_list.html')

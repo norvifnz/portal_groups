@@ -3,7 +3,7 @@ from .models import GroupInfo
 from news.models import News
 from events.models import Event
 from diary.models import DiaryEntry
-
+from django.shortcuts import render
 
 # або правильна назва
 # якщо потрібно
@@ -24,3 +24,6 @@ def home_page(request):
     }
     return render(request, "home.html")
 
+
+def hub_page(request):
+    return render(request, "home/hub.html")

@@ -1,0 +1,47 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div>
+        {{ form.title.label_tag }} {{ form.title }}
+    </div>
+
+    <div>
+        {{ form.description.label_tag }} {{ form.description }}
+    </div>
+
+    <div>
+        {{ form.material_type.label_tag }} {{ form.material_type }}
+    </div>
+
+    <div id="file_field">
+        {{ form.file.label_tag }} {{ form.file }}
+    </div>
+
+    <div id="image_field">
+        {{ form.image.label_tag }} {{ form.image }}
+    </div>
+
+    <div id="link_field">
+        {{ form.link.label_tag }} {{ form.link }}
+    </div>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<script>
+    const materialType = document.getElementById("id_material_type");
+    const linkField = document.getElementById("id_link").parentElement;
+
+    function toggleLinkField() {
+        if (materialType.value === "video") {
+            linkField.style.display = "block";
+        } else {
+            linkField.style.display = "none";
+        }
+    }
+
+    materialType.addEventListener("change", toggleLinkField);
+    // викликаємо при завантаженні сторінки
+    toggleLinkField();
+</script>

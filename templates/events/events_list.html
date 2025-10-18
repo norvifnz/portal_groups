@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Події</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; text-align: center; }
+        .event {
+            background: white;
+            margin: 20px auto;
+            padding: 15px;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        h2 { color: #2c3e50; }
+        .date { color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Список подій</h1>
+
+    {% for event in events %}
+        <div class="event">
+            <h2>{{ event.title }}</h2>
+            <p class="date">{{ event.date }}{% if event.time %} о {{ event.time }}{% endif %}</p>
+            <p>{{ event.description }}</p>
+            <p><b>Місце:</b> {{ event.location }}</p>
+        </div>
+    {% empty %}
+        <p>Поки немає подій.</p>
+    {% endfor %}
+</body>
+</html>

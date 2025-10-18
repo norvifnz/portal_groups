@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Календар подій</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fafafa; text-align: center; }
+        table { margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; width: 100px; height: 80px; }
+        th { background: #2c3e50; color: white; }
+        td { vertical-align: top; }
+        .event-day { background: #a2d5f2; border-radius: 5px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Календар подій {{ month }}/{{ year }}</h1>
+
+    <div>{{ calendar|safe }}</div>
+
+    <h2>Події цього місяця</h2>
+    {% for event in events %}
+        <div class="event-day">
+            <b>{{ event.date }}</b> — {{ event.title }}
+        </div>
+    {% empty %}
+        <p>Немає подій у цьому місяці.</p>
+    {% endfor %}
+</body>
+</html>

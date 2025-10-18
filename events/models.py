@@ -1,12 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
-# Create your models here.
-# app: events
-# models.py
 class Event(models.Model):
-    name = models.CharField(max_length=255)
-    date = models.DateTimeField()
-    location = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    date = models.DateField()
+    time = models.TimeField(blank=True, null=True)
+    location = models.CharField(max_length=200)
+    created_at = models.DateTimeField(default=timezone.now)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)

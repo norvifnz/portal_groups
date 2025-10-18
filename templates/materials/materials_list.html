@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Матеріали</h1>
+
+{% if user.is_staff %}
+<a href="{% url 'material_create' %}" class="btn btn-primary">+ Додати матеріал</a>
+{% endif %}
+
+<hr>
+
+{% for m in materials %}
+  <div class="card mb-3 p-3">
+    <h3>{{ m.title }}</h3>
+    <p>{{ m.description }}</p>
+
+    {% if m.material_type == 'image' and m.image %}
+      <img src="{{ m.image.url }}" width="400" alt="{{ m.title }}">
+    {% elif m.material_type == 'file' and m.file %}
+      <a href="{{ m.file.url }}" download>📄 Завантажити файл</a>
+    {% elif m.material_type == 'video' and m.link %}
+      <iframe width="560" height="315" src="{{ m.youtube_embed }}" frameborder="0" allowfullscreen></iframe>
+    {% elif m.material_type == 'link' and m.link %}
+      <a href="{{ m.link }}" target="_blank">🔗 Перейти за посиланням</a>
+    {% endif %}
+
+    {% if user.is_staff %}
+      <br><a href="{% url 'material_edit' m.pk %}">✏️ Редагувати</a> |
+      <a href="{% url 'material_delete' m.pk %}">🗑️ Видалити</a>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>Поки що немає матеріалів.</p>
+{% endfor %}
+{% endblock %}
